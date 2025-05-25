@@ -1,4 +1,6 @@
 import express, { type Express } from "express";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import fs from "fs";
 import path from "path";
 import { createServer as createViteServer, createLogger } from "vite";
@@ -83,3 +85,7 @@ export function serveStatic(app: Express) {
     res.sendFile(path.resolve(distPath, "index.html"));
   });
 }
+export default defineConfig({
+  base: '/flightbooking/', // 👈 Required for GitHub Pages
+  plugins: [react()],
+});
